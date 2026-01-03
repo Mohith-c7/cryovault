@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Poppins } from "next/font/google"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -94,9 +95,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${GeistMono.variable} antialiased`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
-        <link rel="apple-touch-icon" href="/favicon.jpg" />
-        <link rel="shortcut icon" href="/favicon.jpg" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#292c61" />
         <meta name="msapplication-TileColor" content="#292c61" />
@@ -161,6 +162,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Suspense fallback={null}>{children}</Suspense>
+          <Toaster />
           <Analytics />
         </ThemeProvider>
       </body>

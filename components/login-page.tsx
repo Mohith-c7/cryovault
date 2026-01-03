@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { supabase } from '@/lib/supabase'
 import { toast } from 'sonner'
 
 export default function LoginPage() {
@@ -45,20 +44,27 @@ export default function LoginPage() {
 
     setIsLoading(true)
 
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
 
-      if (error) {
-        toast.error(error.message || 'Login failed. Please check your credentials.')
-        setErrors({ password: error.message })
-      } else if (data.user) {
-        toast.success('Login successful!')
-        // Redirect to dashboard or customer portal
-        router.push('/dashboard')
-      }
+    try {
+      // Fake auth - accept any credentials
+      // Extract name from email (part before @)
+      const userName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+      
+      // Store fake user session in localStorage
+      localStorage.setItem('cryovault_user', JSON.stringify({
+        email: email,
+        name: userName || 'User',
+        loginTime: new Date().toISOString()
+      }))
+
+      toast.success(`Welcome back, ${userName || 'User'}!`)
+      
+      // Force redirect to dashboard with fallback
+      setTimeout(() => {
+        window.location.href = '/dashboard'
+      }, 500)
     } catch (err) {
       toast.error('An unexpected error occurred. Please try again.')
       console.error('Login error:', err)
@@ -297,7 +303,7 @@ export default function LoginPage() {
                 </span>
               </p>
               <p className="text-center text-xs text-muted-foreground mt-4">
-                Protected by enterprise-grade security
+                🚀 Demo Mode Active
               </p>
             </div>
           </div>

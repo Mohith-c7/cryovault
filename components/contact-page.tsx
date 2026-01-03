@@ -188,35 +188,35 @@ export default function ContactPage() {
             Visit us at either of our locations across India
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
             {offices.map((office, idx) => (
               <div
                 key={idx}
-                className="group relative rounded-3xl border border-border/50 bg-card p-8 md:p-10 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+                className="group relative rounded-2xl sm:rounded-3xl border border-border/50 bg-card p-6 sm:p-8 lg:p-10 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
               >
                 {/* Accent line */}
-                <div className="absolute top-0 left-0 w-12 h-1 bg-primary rounded-full group-hover:w-20 transition-all duration-300"></div>
+                <div className="absolute top-0 left-0 w-12 h-1 bg-primary rounded-full group-hover:w-16 sm:group-hover:w-20 transition-all duration-300"></div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold text-foreground mt-4 mb-6">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-foreground mt-4 mb-4 sm:mb-6">
                   {office.city}
                 </h3>
 
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Address */}
-                  <div className="flex gap-4">
+                  <div className="flex gap-3 sm:gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <MapPin className="w-5 h-5 text-primary" />
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground mb-1">Address</p>
-                      <p className="text-foreground leading-relaxed">{office.address}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs sm:text-sm font-medium text-muted-foreground mb-1">Address</p>
+                      <p className="text-sm sm:text-base text-foreground leading-relaxed">{office.address}</p>
                     </div>
                   </div>
 
                   {/* Phone */}
-                  <div className="flex gap-4">
+                  <div className="flex gap-3 sm:gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Phone className="w-5 h-5 text-primary" />
+                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-muted-foreground mb-1">Phone</p>

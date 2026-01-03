@@ -9,7 +9,10 @@ type Photo = {
 
 export function HeroCarousel({ photos }: { photos: Photo[] }) {
   return (
-    <section aria-label="Featured images" className="w-full bg-card h-[90vh] min-h-[700px] max-h-[1000px]">
+    <section 
+      aria-label="Featured images" 
+      className="w-full bg-card aspect-video md:h-[90vh] md:min-h-[700px] md:max-h-[1000px]"
+    >
       <HeroCarouselClient photos={photos} />
     </section>
   );

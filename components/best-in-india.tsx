@@ -82,17 +82,14 @@ export default function BestInIndiaSection() {
             <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-purple-400/60 rounded-bl-3xl" />
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-cyan-400/60 rounded-br-3xl" />
             
-            <div className="relative group">
+            <div className="relative">
               {/* Image container */}
               <div className="relative overflow-hidden rounded-3xl border border-white/30 shadow-2xl">
                 <img
                   src="/award.jpg"
                   alt="CryoVault receiving Best Stem Cell Bank in India award"
-                  className="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-[400px] md:h-[500px] object-cover"
                 />
-                
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
           </div>

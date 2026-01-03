@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Lock, Eye, EyeOff, Loader2, CheckCircle, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { supabase } from '@/lib/supabase'
 import { toast } from 'sonner'
 
 export default function ResetPasswordPage() {
@@ -21,16 +20,9 @@ export default function ResetPasswordPage() {
   const [errors, setErrors] = useState<{ password?: string; confirmPassword?: string }>({})
 
   useEffect(() => {
-    // Check if user has a valid session from the reset link
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession()
-      if (!data.session) {
-        toast.error('Invalid or expired reset link')
-        router.push('/forgot-password')
-      }
-    }
-    checkSession()
-  }, [router])
+    // In demo mode, we'll just show a message that this would normally validate the reset token
+    toast.info('Demo mode: Password reset simulation')
+  }, [])
 
   const validateForm = () => {
     const newErrors: { password?: string; confirmPassword?: string } = {}
@@ -67,20 +59,14 @@ export default function ResetPasswordPage() {
     setIsLoading(true)
 
     try {
-      const { error } = await supabase.auth.updateUser({
-        password: password,
-      })
-
-      if (error) {
-        toast.error(error.message || 'Failed to reset password')
-        setErrors({ password: error.message })
-      } else {
-        setIsSuccess(true)
-        toast.success('Password reset successfully!')
-        setTimeout(() => {
-          router.push('/login')
-        }, 3000)
-      }
+      // Fake password reset - simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      setIsSuccess(true)
+      toast.success('Password reset successfully! (Demo mode)')
+      setTimeout(() => {
+        router.push('/login')
+      }, 3000)
     } catch (err) {
       toast.error('An unexpected error occurred')
       console.error('Password reset error:', err)

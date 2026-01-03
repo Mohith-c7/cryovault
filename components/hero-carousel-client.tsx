@@ -61,7 +61,7 @@ export function HeroCarouselClient({ photos }: { photos: Photo[] }) {
             <img
               src={slide.url || "/placeholder.jpg"}
               alt={slide.title || "CryoVault Stem Cell Banking"}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
               width={1920}
               height={1080}
               loading={idx === 0 ? "eager" : "lazy"}
@@ -75,29 +75,29 @@ export function HeroCarouselClient({ photos }: { photos: Photo[] }) {
         {/* Left Navigation Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 h-14 w-14 md:h-16 md:w-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-6 w-6 md:h-8 md:w-8 text-white" strokeWidth={2.5} />
+          <ChevronLeft className="h-4 w-4 md:h-6 md:w-6 text-white" strokeWidth={2.5} />
         </button>
 
         {/* Right Navigation Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 h-14 w-14 md:h-16 md:w-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
+          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 shadow-lg"
           aria-label="Next slide"
         >
-          <ChevronRight className="h-6 w-6 md:h-8 md:w-8 text-white" strokeWidth={2.5} />
+          <ChevronRight className="h-4 w-4 md:h-6 md:w-6 text-white" strokeWidth={2.5} />
         </button>
 
         {/* Navigation Dots */}
-        <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center gap-3">
+        <div className="absolute bottom-4 md:bottom-6 left-0 right-0 z-10 flex justify-center gap-2 md:gap-3">
           {photos.map((_, idx) => (
             <button
               key={idx}
               onClick={() => showSlide(idx)}
               aria-label={`View slide ${idx + 1}`}
-              className={`h-3 w-3 rounded-full transition-all duration-300 ${
+              className={`h-2 w-2 md:h-3 md:w-3 rounded-full transition-all duration-300 ${
                 idx === currentSlide 
                   ? 'bg-white scale-125 shadow-lg' 
                   : 'bg-white/50 hover:bg-white/70 hover:scale-110'

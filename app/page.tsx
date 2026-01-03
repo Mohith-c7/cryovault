@@ -22,13 +22,16 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { FloatingActionButton } from "@/components/floating-action-button"
 
 export const metadata: Metadata = {
-  title: "Cryovault | Trusted Stem Cell Banking in India",
+  title: "Cryovault | Most Trusted Stem Cell Bank in India",
   description: "Cryovault offers advanced stem cell banking services in India with ISO-certified labs, long-term cryogenic storage, and medical-grade safety standards. Secure your baby's future health today.",
   keywords: [
     "stem cell banking India",
     "cord blood banking",
     "stem cell preservation",
     "cryovault",
+    "cryovault biotech india",
+    "cryovault india",
+    "cryovault stemcell banking",
     "umbilical cord stem cells",
     "newborn stem cell storage",
     "cord blood collection India",
@@ -56,66 +59,78 @@ type Photo = {
 export const dynamic = "force-dynamic" // ensure SSR in Next.js
 
 export default async function Page() {
-  // Local placeholder images for the hero carousel
+  // Hero carousel banner images
   const photos: Photo[] = [
     {
       id: 1,
-      title: "Stem Cell Banking",
-      url: "/placeholder.jpg",
-      thumbnailUrl: "/placeholder.jpg"
+      title: "CryoVault Stem Cell Banking - Banner 1",
+      url: "/banner1.png",
+      thumbnailUrl: "/banner1.png"
     },
     {
       id: 2,
-      title: "Expert Care",
-      url: "/placeholder.jpg",
-      thumbnailUrl: "/placeholder.jpg"
+      title: "CryoVault Stem Cell Banking - Banner 2",
+      url: "/banner2.png",
+      thumbnailUrl: "/banner2.png"
     },
     {
       id: 3,
-      title: "Secure Storage",
-      url: "/placeholder.jpg",
-      thumbnailUrl: "/placeholder.jpg"
+      title: "CryoVault Stem Cell Banking - Banner 3",
+      url: "/banner3.png",
+      thumbnailUrl: "/banner3.png"
     },
     {
       id: 4,
-      title: "Nationwide Service",
-      url: "/placeholder.jpg",
-      thumbnailUrl: "/placeholder.jpg"
-    },
-    {
-      id: 5,
-      title: "Future-Ready Solutions",
-      url: "/placeholder.jpg",
-      thumbnailUrl: "/placeholder.jpg"
+      title: "CryoVault Stem Cell Banking - Banner 4",
+      url: "/banner4.png",
+      thumbnailUrl: "/banner4.png"
     }
   ]
 
   const testimonials = [
     {
       author: {
-        name: "Priya Sharma",
-        handle: "@priyasharma",
+        name: "Thiruvenkataraja Karthikeyan",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
       },
-      text: "CryoVault's team was incredibly professional during the cord blood collection. The entire process was seamless and gave us peace of mind for our baby's future health security.",
+      text: "Great effort done by the team.. Starting from agreement to taking over the kit after delivery, Everything made easy n simple.",
       href: "https://twitter.com",
     },
     {
       author: {
-        name: "Rajesh Kumar",
-        handle: "@rajeshkumar",
+        name: "Keerthi Priya",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       },
-      text: "The expert guidance from CryoVault. We’ve reduced our development time significantly.",
+      text: "Cryovault's service was excellent. They were available round the clock, explained everything clearly about stem cell storage, and the prices were reasonable. Happy customer here!",
       href: "https://twitter.com",
     },
     {
       author: {
-        name: "Dr. Meera Patel",
-        handle: "@drmeerapatel",
+        name: "Rituraj Raman",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
       },
-      text: "As a pediatrician, I recommend CryoVault to my patients. Their international standards and DCGI licensing ensure the highest quality stem cell preservation for families.",
+      text: "Yesterday we had baby delivery. Customer service so good. They were so much proactive even in midnight or early morning hrs.. They were able to reach before time. Thanks much for all good service.",
+    },
+    {
+      author: {
+        name: "kola mallikarjunarao",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+      },
+      text: "We had high expectations when it came to preserving our baby's cord blood, and this facility exceeded them. The professional approach and care given to this vital process are truly impressive.",
+    },
+    {
+      author: {
+        name: "Bharathi K",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+      },
+      text: "The decision to store our baby's cord blood was made easy thanks to the knowledgeable and supportive team at the Cryovault facility. We feel confident knowing we've safeguarded our child's well-being.",
+    },
+    {
+      author: {
+        name: "Amgoth Laxmi",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+      },
+      text: "Being first-time parents, we were grateful for the guidance and seamless experience provided by the cryovault cord blood storage service. It's a relief to know we've taken a significant step for our baby's future health.",
     },
   ]
 

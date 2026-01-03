@@ -14,137 +14,137 @@ export default function SiteFooter() {
         }} />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         {/* Main Footer Content */}
-        <div className="py-16 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="py-8 sm:py-12 md:py-16 lg:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             
-            {/* Company Info */}
-            <div className="lg:col-span-1 space-y-8">
-              <div className="space-y-4">
+            {/* Company Info - Full width on mobile */}
+            <div className="sm:col-span-2 lg:col-span-1 space-y-4 sm:space-y-6">
+              <div className="space-y-3 sm:space-y-4">
                 <img
-                  src="/logo-cryovault.jpg"
+                  src="/whitelogo.png"
                   alt="Cryovault Logo"
-                  className="h-16 w-auto"
+                  className="h-10 sm:h-12 md:h-14 w-auto"
                 />
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                   Cryovault
                 </h3>
-                <p className="text-slate-300 text-lg leading-relaxed">
+                <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed">
                   India's most trusted stem cell banking service, preserving hope for families with advanced cryogenic technology.
                 </p>
               </div>
 
-              {/* Contact Information */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-6 h-6 mt-1">
-                    <Phone className="w-6 h-6 text-primary" />
+              {/* Contact Information - Optimized for mobile */}
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
+                    <Phone className="w-full h-full text-primary" />
                   </div>
-                  <div>
-                    <p className="text-white font-semibold">+91 1800-XXX-XXXX</p>
-                    <p className="text-slate-400 text-sm">24/7 Support Available</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-white font-semibold text-sm sm:text-base">+91 1800-XXX-XXXX</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">24/7 Support Available</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-6 h-6 mt-1">
-                    <Mail className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
+                    <Mail className="w-full h-full text-primary" />
                   </div>
-                  <div>
-                    <p className="text-white font-semibold">info@cryovault.in</p>
-                    <p className="text-slate-400 text-sm">Quick Response Guaranteed</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-white font-semibold text-sm sm:text-base break-all">info@cryovault.in</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">Quick Response Guaranteed</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-6 h-6 mt-1">
-                    <MapPin className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
+                    <MapPin className="w-full h-full text-primary" />
                   </div>
-                  <div>
-                    <p className="text-white font-semibold">Nationwide Service</p>
-                    <p className="text-slate-400 text-sm">28+ States Covered</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-white font-semibold text-sm sm:text-base">Pan India Service</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">Nationwide Coverage</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Services */}
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-white">
+            {/* Services - Mobile optimized */}
+            <div className="space-y-4 sm:space-y-5">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold text-white border-b border-slate-700 pb-2">
                 Our Services
               </h4>
-              <nav className="space-y-4">
-                <Link href="/stem-cell-banking" className="block text-slate-300 hover:text-white transition-colors duration-200">
+              <nav className="space-y-2 sm:space-y-3">
+                <Link href="/stem-cell-banking" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Stem Cell Banking
                 </Link>
-                <Link href="/pricing" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/pricing" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Plans & Pricing
                 </Link>
-                <Link href="/appointment" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/appointment" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Book Appointment
                 </Link>
-                <Link href="/information-kit" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/information-kit" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Information Kit
                 </Link>
-                <Link href="/pregnancy-diet" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/pregnancy-diet" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Pregnancy Diet Chart
                 </Link>
-                <Link href="/immunization-chart" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/immunization-chart" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Immunization Chart
                 </Link>
               </nav>
             </div>
 
-            {/* Company */}
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-white">
+            {/* Company - Mobile optimized */}
+            <div className="space-y-4 sm:space-y-5">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold text-white border-b border-slate-700 pb-2">
                 Company
               </h4>
-              <nav className="space-y-4">
-                <Link href="/about" className="block text-slate-300 hover:text-white transition-colors duration-200">
+              <nav className="space-y-2 sm:space-y-3">
+                <Link href="/about" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   About Us
                 </Link>
-                <Link href="/leadership" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/leadership" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Leadership
                 </Link>
-                <Link href="/accreditations" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/accreditations" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Accreditations
                 </Link>
-                <Link href="/careers" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/careers" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Careers
                 </Link>
-                <Link href="/franchise" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/franchise" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Franchise
                 </Link>
-                <Link href="/contact" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/contact" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Contact Us
                 </Link>
               </nav>
             </div>
 
-            {/* Resources */}
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-white">
+            {/* Resources - Mobile optimized */}
+            <div className="space-y-4 sm:space-y-5">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold text-white border-b border-slate-700 pb-2">
                 Resources
               </h4>
-              <nav className="space-y-4">
-                <Link href="/blogs" className="block text-slate-300 hover:text-white transition-colors duration-200">
+              <nav className="space-y-2 sm:space-y-3">
+                <Link href="/blogs" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Blog & Insights
                 </Link>
-                <Link href="/gallery" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/gallery" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Gallery
                 </Link>
-                <Link href="/videos" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/videos" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Videos
                 </Link>
-                <Link href="/privacy" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/privacy" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Privacy Policy
                 </Link>
-                <Link href="/terms" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/terms" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Terms of Service
                 </Link>
-                <Link href="/cookies" className="block text-slate-300 hover:text-white transition-colors duration-200">
+                <Link href="/cookies" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Cookie Policy
                 </Link>
               </nav>
@@ -152,14 +152,14 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-slate-700 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Bottom Section - Mobile optimized */}
+        <div className="border-t border-slate-700 py-4 sm:py-6 md:py-8">
+          <div className="flex flex-col gap-4 sm:gap-6">
             
-            {/* Social Media */}
-            <div className="flex items-center gap-6">
-              <span className="text-slate-400 font-medium">Follow Us:</span>
-              <div className="flex items-center gap-4">
+            {/* Social Media - Mobile first */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 md:gap-6">
+              <span className="text-slate-400 font-medium text-sm sm:text-base">Follow Us:</span>
+              <div className="flex items-center gap-2 sm:gap-3">
                 {[
                   { Icon: Facebook, href: "#", name: "Facebook" },
                   { Icon: Instagram, href: "#", name: "Instagram" },
@@ -171,18 +171,18 @@ export default function SiteFooter() {
                     key={name}
                     href={href}
                     aria-label={name}
-                    className="w-10 h-10 bg-slate-800 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-slate-800 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 touch-manipulation"
                   >
-                    <Icon className="w-5 h-5 text-slate-300 hover:text-white" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-slate-300 hover:text-white" />
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Copyright */}
-            <div className="text-slate-400 text-center md:text-right">
+            {/* Copyright - Mobile centered */}
+            <div className="text-slate-400 text-center text-xs sm:text-sm md:text-base">
               <p>© {new Date().getFullYear()} Cryovault. All rights reserved.</p>
-              <p className="text-sm mt-1">Made with care in India</p>
+              <p className="text-xs sm:text-sm mt-1">Made with care in India</p>
             </div>
           </div>
         </div>

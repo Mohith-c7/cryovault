@@ -29,7 +29,7 @@ export function AboutSection() {
 
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto mt-8 sm:mt-10"
         >
           {/* Card 1 */}
           <article className={`rounded-2xl bg-card shadow-sm overflow-hidden hover-lift transition-all duration-700 ${
@@ -39,14 +39,14 @@ export function AboutSection() {
               <img
                 src="/elevenyears.png"
                 alt="10+ years of Expertise"
-                className="w-full h-60 object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-48 sm:h-56 lg:h-60 object-cover transition-transform duration-500 hover:scale-110"
                 width={400}
                 height={240}
               />
             </div>
-            <div className="p-4 shadow-none px-5 py-5">
-              <h3 className="font-semibold text-primary text-xl">10+ years of Expertise</h3>
-              <p className="text-sm text-foreground/70 mt-1">Trusted by thousands of families with proven stem cell banking expertise and advanced preservation techniques</p>
+            <div className="p-4 sm:p-5">
+              <h3 className="font-semibold text-primary text-lg sm:text-xl mb-2">10+ years of Expertise</h3>
+              <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">Trusted by thousands of families with proven stem cell banking expertise and advanced preservation techniques</p>
             </div>
           </article>
 
@@ -58,14 +58,14 @@ export function AboutSection() {
               <img
                 src="/lab.png"
                 alt="ISO Certified Laboratory"
-                className="w-full h-60 object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-48 sm:h-56 lg:h-60 object-cover transition-transform duration-500 hover:scale-110"
                 width={400}
                 height={240}
               />
             </div>
-            <div className="p-4 px-5 py-5">
-              <h3 className="font-semibold text-primary text-xl">ISO Certified Laboratory</h3>
-              <p className="text-sm text-foreground/70 mt-1">State-of-the-art facilities meeting international quality standards for safe and reliable stem cell storage</p>
+            <div className="p-4 sm:p-5">
+              <h3 className="font-semibold text-primary text-lg sm:text-xl mb-2">ISO Certified Laboratory</h3>
+              <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">State-of-the-art facilities meeting international quality standards for safe and reliable stem cell storage</p>
             </div>
           </article>
 
@@ -77,14 +77,14 @@ export function AboutSection() {
               <img
                 src="/nationwide.png"
                 alt="Nationwide Service"
-                className="w-full h-60 object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-48 sm:h-56 lg:h-60 object-cover transition-transform duration-500 hover:scale-110"
                 width={400}
                 height={240}
               />
             </div>
-            <div className="p-4 px-5 py-5">
-              <h3 className="font-semibold text-primary text-xl">Nationwide Service</h3>
-              <p className="text-sm text-foreground/70 mt-1">Comprehensive collection and storage services available across India with dedicated support teams</p>
+            <div className="p-4 sm:p-5">
+              <h3 className="font-semibold text-primary text-lg sm:text-xl mb-2">Nationwide Service</h3>
+              <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">Comprehensive collection and storage services available across India with dedicated support teams</p>
             </div>
           </article>
         </div>

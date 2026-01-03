@@ -45,18 +45,33 @@ export default function ThreeStepsSection() {
                     </p>
                 </div>
 
-                {/* Video Placeholder */}
+                {/* Video */}
                 <div className={`mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
-                        <img
-                            src="/placeholder.jpg"
-                            alt="Video placeholder - How stem cell banking works"
-                            className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
-                        />
-                        {/* Play button overlay */}
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover cursor-pointer"
+                            onClick={() => window.open('https://youtu.be/KjzJqTuM0Jc?si=3D6ns-67V1l3yOqA', '_blank')}
+                        >
+                            <source src="/lab.mp4" type="video/mp4" />
+                            {/* Fallback image if video doesn't load */}
+                            <img
+                                src="/threesteps.png"
+                                alt="Three easy steps to stem cell banking - Enrollment, Collection, Storage"
+                                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
+                            />
+                        </video>
+                        
+                        {/* YouTube button overlay - Always visible */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <button 
-                                className="group flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            <a 
+                                href="https://youtu.be/KjzJqTuM0Jc?si=3D6ns-67V1l3yOqA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                                 aria-label="Watch video on YouTube"
                             >
                                 <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center group-hover:bg-primary/90 transition-colors">
@@ -64,8 +79,8 @@ export default function ThreeStepsSection() {
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
-                                <span className="font-semibold text-gray-900">Watch it on Youtube</span>
-                            </button>
+                                <span className="font-semibold text-gray-900">View on YouTube</span>
+                            </a>
                         </div>
                     </div>
                 </div>

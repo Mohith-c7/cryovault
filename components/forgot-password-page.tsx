@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Mail, ArrowLeft, Loader2, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { supabase } from '@/lib/supabase'
 import { toast } from 'sonner'
 
 export default function ForgotPasswordPage() {
@@ -31,17 +30,11 @@ export default function ForgotPasswordPage() {
     setIsLoading(true)
 
     try {
-      const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/reset-password`,
-      })
-
-      if (resetError) {
-        toast.error(resetError.message || 'Failed to send reset email')
-        setError(resetError.message || 'Failed to send reset email')
-      } else {
-        setIsSubmitted(true)
-        toast.success('Password reset email sent!')
-      }
+      // Fake password reset - simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      setIsSubmitted(true)
+      toast.success('Password reset email sent! (Demo mode)')
     } catch (err) {
       toast.error('An unexpected error occurred')
       console.error('Password reset error:', err)
