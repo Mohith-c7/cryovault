@@ -11,7 +11,7 @@ export function HeroCarousel({ photos }: { photos: Photo[] }) {
   return (
     <section 
       aria-label="Featured images" 
-      className="w-full bg-card aspect-video md:h-[90vh] md:min-h-[700px] md:max-h-[1000px]"
+      className="w-full bg-card aspect-video md:h-[90vh] md:min-h-[500px] md:max-h-[700px]"
     >
       <HeroCarouselClient photos={photos} />
     </section>

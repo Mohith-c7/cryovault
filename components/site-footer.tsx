@@ -39,17 +39,17 @@ export default function SiteFooter() {
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
-                    <Phone className="w-full h-full text-primary" />
+                    <Phone className="w-full h-full text-white" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-white font-semibold text-sm sm:text-base">+91 1800-XXX-XXXX</p>
+                    <p className="text-white font-semibold text-sm sm:text-base">1800 1024 026</p>
                     <p className="text-slate-400 text-xs sm:text-sm">24/7 Support Available</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
-                    <Mail className="w-full h-full text-primary" />
+                    <Mail className="w-full h-full text-white" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-white font-semibold text-sm sm:text-base break-all">info@cryovault.in</p>
@@ -59,7 +59,7 @@ export default function SiteFooter() {
 
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 mt-0.5">
-                    <MapPin className="w-full h-full text-primary" />
+                    <MapPin className="w-full h-full text-white" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-white font-semibold text-sm sm:text-base">Pan India Service</p>
@@ -104,9 +104,6 @@ export default function SiteFooter() {
               <nav className="space-y-2 sm:space-y-3">
                 <Link href="/about" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   About Us
-                </Link>
-                <Link href="/leadership" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
-                  Leadership
                 </Link>
                 <Link href="/accreditations" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm sm:text-base py-1 hover:pl-2 transition-all touch-manipulation">
                   Accreditations

@@ -18,7 +18,7 @@ const videos: Video[] = [
   },
   {
     id: 'video-2',
-    title: 'CryoVault Facility Tour',
+    title: 'Cryovault Facility Tour',
     description: 'Take a virtual tour of our state-of-the-art laboratory and storage facilities.',
     youtubeId: 'dQw4w9WgXcQ',
     thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
@@ -46,8 +46,8 @@ const videos: Video[] = [
   },
   {
     id: 'video-6',
-    title: 'Why Choose CryoVault?',
-    description: 'Learn what makes CryoVault the trusted choice for stem cell preservation in India.',
+    title: 'Why Choose Cryovault?',
+    description: 'Learn what makes Cryovault the trusted choice for stem cell preservation in India.',
     youtubeId: 'dQw4w9WgXcQ',
     thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
   }
@@ -69,7 +69,7 @@ export default function VideosPage() {
           </h1>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Explore our comprehensive video library to learn more about stem cell banking, regenerative medicine, and how CryoVault can help preserve your family's future health.
+            Explore our comprehensive video library to learn more about stem cell banking, regenerative medicine, and how Cryovault can help preserve your family's future health.
           </p>
         </div>
       </section>
@@ -144,7 +144,7 @@ export default function VideosPage() {
             Learn More About Stem Cell Banking
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Subscribe to our YouTube channel for regular updates on regenerative medicine, wellness tips, and CryoVault news.
+            Subscribe to our YouTube channel for regular updates on regenerative medicine, wellness tips, and Cryovault news.
           </p>
           <a
             href="https://www.youtube.com/@cryovault"

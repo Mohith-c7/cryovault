@@ -6,6 +6,9 @@ import { Poppins } from "next/font/google"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import { GoogleAnalytics } from "@/components/google-analytics"
+import { AuthProvider } from "@/contexts/auth-context"
+import { FloatingActions } from "@/components/floating-actions"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -155,14 +158,22 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans">
+        {/* Google Analytics */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <Suspense fallback={null}>{children}</Suspense>
-          <Toaster />
+          <AuthProvider>
+            <Suspense fallback={null}>{children}</Suspense>
+            <Toaster />
+            <FloatingActions />
+          </AuthProvider>
           <Analytics />
         </ThemeProvider>
       </body>

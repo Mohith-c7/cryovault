@@ -58,18 +58,42 @@ export default function AboutPage() {
               </CTAButton>
             </div>
 
-            {/* Right: Video Placeholder */}
-            <div className="relative group">
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20">
-                <img
-                  src="/placeholder.jpg"
-                  alt="CryoVault Stem Cell Banking"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform cursor-pointer">
-                    <Play className="w-8 h-8 text-white fill-white ml-1" />
-                  </div>
+            {/* Right: Video */}
+            <div className="relative">
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => window.open('https://youtu.be/KjzJqTuM0Jc?si=3D6ns-67V1l3yOqA', '_blank')}
+                >
+                  <source src="/lab.mp4" type="video/mp4" />
+                  {/* Fallback image if video doesn't load */}
+                  <img
+                    src="/placeholder.jpg"
+                    alt="CryoVault Stem Cell Banking"
+                    className="w-full h-full object-cover"
+                  />
+                </video>
+                
+                {/* YouTube button overlay - Always visible */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <a 
+                    href="https://youtu.be/KjzJqTuM0Jc?si=3D6ns-67V1l3yOqA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    aria-label="Watch video on YouTube"
+                  >
+                    <div className="h-10 w-10 bg-primary rounded-full flex items-center justify-center group-hover:bg-primary/90 transition-colors">
+                      <svg className="h-5 w-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-gray-900">View on YouTube</span>
+                  </a>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl -z-10"></div>
@@ -96,12 +120,40 @@ export default function AboutPage() {
             </div>
 
             <div className="order-1 md:order-2">
-              <div className="relative w-full h-[500px] flex items-center justify-center">
+              {/* Mobile Layout - Stack vertically */}
+              <div className="block md:hidden space-y-8">
+                <div className="w-full aspect-square max-w-sm mx-auto rounded-full overflow-hidden shadow-2xl">
+                  <img
+                    src="/lab.png"
+                    alt="Cryovault Laboratory Facility"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Mobile Cards - Grid Layout */}
+                <div className="grid grid-cols-1 gap-4 max-w-sm mx-auto">
+                  <div className="bg-gradient-to-br from-[#292c61] to-[#4845a9] rounded-2xl p-4 text-white shadow-xl">
+                    <h4 className="font-bold text-sm mb-2">Innovation</h4>
+                    <p className="text-xs leading-relaxed">Advanced cryopreservation technology for optimal stem cell viability</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-[#292c61] to-[#4845a9] rounded-2xl p-4 text-white shadow-xl">
+                    <h4 className="font-bold text-sm mb-2">Trust</h4>
+                    <p className="text-xs leading-relaxed">ISO certified processes ensure highest quality standards and family confidence</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-[#292c61] to-[#4845a9] rounded-2xl p-4 text-white shadow-xl">
+                    <h4 className="font-bold text-sm mb-2">Excellence</h4>
+                    <p className="text-xs leading-relaxed">24/7 monitoring and state-of-the-art storage facilities</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Layout - Original circular design */}
+              <div className="hidden md:block relative w-full h-[500px] flex items-center justify-center">
                 {/* Main Circular Image - Larger */}
                 <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl z-20">
                   <img
-                    src="/onceinalifetime.png"
-                    alt="CryoVault Laboratory Facility"
+                    src="/lab.png"
+                    alt="Cryovault Laboratory Facility"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/20"></div>
@@ -388,13 +440,75 @@ export default function AboutPage() {
           </div>
 
           {/* Radial Layout Container */}
-          <div className="relative w-full max-w-5xl mx-auto aspect-square md:aspect-[4/3]">
+          <div className="relative w-full max-w-5xl mx-auto">
+            
+            {/* Mobile Layout - Grid */}
+            <div className="block md:hidden">
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                {/* Promise 1 */}
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-sm font-bold text-foreground mb-1">Safety First</h4>
+                  <p className="text-xs text-muted-foreground leading-tight">24/7 Monitoring & Security</p>
+                </div>
+
+                {/* Promise 2 */}
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-sm font-bold text-foreground mb-1">Quality Assured</h4>
+                  <p className="text-xs text-muted-foreground leading-tight">ISO Certified Excellence</p>
+                </div>
+
+                {/* Promise 3 */}
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-sm font-bold text-foreground mb-1">Expert Support</h4>
+                  <p className="text-xs text-muted-foreground leading-tight">Dedicated Care Team</p>
+                </div>
+
+                {/* Promise 4 */}
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center">
+                  <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                    <Lightbulb className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-sm font-bold text-foreground mb-1">Innovation</h4>
+                  <p className="text-xs text-muted-foreground leading-tight">Cutting-Edge Technology</p>
+                </div>
+              </div>
+
+              {/* Promise 5 - Full width */}
+              <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center max-w-sm mx-auto mb-8">
+                <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Heart className="w-7 h-7 text-white" />
+                </div>
+                <h4 className="text-base font-bold text-foreground mb-1">Compassionate Care</h4>
+                <p className="text-sm text-muted-foreground leading-tight">Personalized Family Support</p>
+              </div>
+
+              {/* Central Image for Mobile */}
+              <div className="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white">
+                <img
+                  src="/lady1.png"
+                  alt="Cryovault Promise"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Desktop Layout - Original circular design */}
+            <div className="hidden md:block relative aspect-square md:aspect-[4/3]">
             
             {/* Central Circle - Image */}
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 rounded-full shadow-2xl z-20 group hover:scale-105 transition-all duration-500 overflow-hidden border-4 border-white">
               <img
                 src="/lady1.png"
-                alt="CryoVault Promise"
+                alt="Cryovault Promise"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -506,29 +620,6 @@ export default function AboutPage() {
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] border border-dashed border-primary/10 rounded-full pointer-events-none"></div>
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] border border-dashed border-primary/5 rounded-full pointer-events-none"></div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Message from Managing Director */}
-      <section className="w-full px-5 md:px-8 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users className="w-8 h-8 text-primary" />
-                </div>
-              </div>
-              <div>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6 italic">
-                  "At CryoVault, we believe that every family deserves access to the transformative power of stem cell preservation. Our mission is not just to store cells, but to preserve hope and possibilities for future generations. We are committed to maintaining the highest standards of excellence while making our services accessible and affordable for families across India."
-                </p>
-                <div>
-                  <p className="font-semibold text-foreground">Dr. Rajesh Kumar</p>
-                  <p className="text-sm text-muted-foreground">Managing Director, CryoVault</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

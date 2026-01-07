@@ -7,53 +7,34 @@ import { LogOut, User, Settings, Home, FileText, Phone, Shield } from 'lucide-re
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/navbar'
 import { toast } from 'sonner'
-
-interface FakeUser {
-  email: string
-  name: string
-  loginTime: string
-}
+import { useAuth } from '@/contexts/auth-context'
 
 export default function DashboardPage() {
+  const { user, loading, signOut } = useAuth()
   const router = useRouter()
-  const [user, setUser] = useState<FakeUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const checkAuth = () => {
-      try {
-        const userData = localStorage.getItem('cryovault_user')
-        
-        if (!userData) {
-          router.push('/login')
-          return
-        }
-
-        const parsedUser = JSON.parse(userData)
-        setUser(parsedUser)
-      } catch (err) {
-        console.error('Auth check error:', err)
+    if (!loading) {
+      if (!user) {
         router.push('/login')
-      } finally {
+      } else {
         setIsLoading(false)
       }
     }
+  }, [user, loading, router])
 
-    checkAuth()
-  }, [router])
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
     try {
-      localStorage.removeItem('cryovault_user')
+      await signOut()
       toast.success('Logged out successfully')
       router.push('/login')
     } catch (err) {
       toast.error('Failed to logout')
-      console.error('Logout error:', err)
     }
   }
 
-  if (isLoading) {
+  if (loading || isLoading) {
     return (
       <main className="w-full min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center">
         <div className="text-center space-y-4">
@@ -62,6 +43,10 @@ export default function DashboardPage() {
         </div>
       </main>
     )
+  }
+
+  if (!user) {
+    return null
   }
 
   return (
@@ -78,7 +63,7 @@ export default function DashboardPage() {
             </div>
             <div>
               <h2 className="text-sm sm:text-base font-semibold text-foreground">Customer Portal</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">Welcome, {user?.name}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Welcome, {user.profile?.full_name || user.email?.split('@')[0]}</p>
             </div>
           </div>
 
@@ -101,16 +86,42 @@ export default function DashboardPage() {
         {/* Welcome Section */}
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground mb-2">
-            Welcome, {user?.name}!
+            Welcome, {user.profile?.full_name || user.email?.split('@')[0]}!
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground">
             Manage your stem cell banking services and view your stored samples
           </p>
           <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
             <Shield className="w-4 h-4" />
-            Demo Mode Active
+            {user.profile?.role === 'admin' ? 'Admin Access' : 'Customer Portal'}
           </div>
         </div>
+
+        {/* Admin Access */}
+        {user.profile?.role === 'admin' && (
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Admin Dashboard</h3>
+                <p className="text-gray-600">Access admin features to manage blogs and view form submissions.</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild>
+                  <Link href="/admin">
+                    <Settings className="w-4 h-4 mr-2" />
+                    Admin Dashboard
+                  </Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/admin/blogs">
+                    <FileText className="w-4 h-4 mr-2" />
+                    Manage Blogs
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* User Info Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
@@ -121,7 +132,7 @@ export default function DashboardPage() {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs sm:text-sm text-muted-foreground">Account Email</p>
-                <p className="font-semibold text-foreground text-sm sm:text-base truncate">{user?.email}</p>
+                <p className="font-semibold text-foreground text-sm sm:text-base truncate">{user.email}</p>
               </div>
             </div>
           </div>

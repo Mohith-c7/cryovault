@@ -80,7 +80,7 @@ export default function AppointmentPage() {
               Trusted by Thousands
             </h2>
             <p className="text-lg text-muted-foreground">
-              Join families across India who trust CryoVault for their stem cell banking needs
+              Join families across India who trust Cryovault for their stem cell banking needs
             </p>
           </div>
 

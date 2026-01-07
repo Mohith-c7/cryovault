@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, Clock, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useAnalytics } from '@/hooks/use-analytics'
+import { createContactSubmission } from '@/lib/contact'
 
 interface OfficeInfo {
   city: string
@@ -15,6 +17,7 @@ interface OfficeInfo {
     lat: number
     lng: number
   }
+  mapLink: string
 }
 
 interface FormErrors {
@@ -30,24 +33,28 @@ const offices: OfficeInfo[] = [
   {
     city: 'Bengaluru',
     address: 'No.:52/65, Swami Vivekananda road, Srinivasa layout, Bagalur, North Bengaluru, Karnataka- 562149.',
-    phone: '+91 73311 61886',
-    whatsapp: '+91 73311 61886',
-    emails: ['info@cryovault.in', 'contacts@cryovault.in'],
+    phone: '1800 1024 026',
+    whatsapp: '',
+    emails: ['info@cryovault.in'],
     hours: '24/7 Hours',
-    coordinates: { lat: 13.1939, lng: 77.5937 }
+    coordinates: { lat: 13.1939, lng: 77.5937 },
+    mapLink: 'https://maps.app.goo.gl/veoZaPbQYvJoKNGM8'
   },
   {
     city: 'Hyderabad',
     address: 'Plot no. 9D, First Floor, Road no. 9, Durga Bhavani Nagar, Film Nagar, Hyderabad, Telangana – 500096, India',
-    phone: '+91 73311 61886',
-    whatsapp: '+91 73311 61886',
-    emails: ['admin@cryovault.in', 'contacts@cryovault.in'],
+    phone: '1800 1024 026',
+    whatsapp: '',
+    emails: ['info@cryovault.in'],
     hours: '24/7 Hours',
-    coordinates: { lat: 17.3850, lng: 78.4867 }
+    coordinates: { lat: 17.3850, lng: 78.4867 },
+    mapLink: 'https://maps.app.goo.gl/d171eDZhTtUJi4Tn7'
   }
 ]
 
 export default function ContactPage() {
+  const { trackButtonClick, trackFormSubmit, trackPhoneCall, trackEmailClick } = useAnalytics()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -142,10 +149,19 @@ export default function ContactPage() {
     setIsLoading(true)
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      console.log('Form submitted:', formData)
+      // Save to Supabase
+      const { data, error } = await createContactSubmission({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        subject: formData.subject,
+        message: formData.message
+      })
+
+      if (error) {
+        throw error
+      }
+
       setSubmitted(true)
       
       setTimeout(() => {
@@ -154,7 +170,7 @@ export default function ContactPage() {
         setSubmitted(false)
       }, 4000)
     } catch (error) {
-      console.error('Error:', error)
+      // Error submitting form
     } finally {
       setIsLoading(false)
     }
@@ -175,6 +191,55 @@ export default function ContactPage() {
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             We're here to answer your questions and help you on your journey to preserving your child's future
           </p>
+        </div>
+      </section>
+
+      {/* Common Contact Information */}
+      <section className="w-full px-5 md:px-8 py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-background">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              Contact <span className="text-primary">Information</span>
+            </h2>
+            <p className="text-muted-foreground">
+              Reach out to us through any of these channels
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            {/* Phone */}
+            <div className="group text-center p-8 rounded-2xl bg-white border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
+                <Phone className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Call Us</h3>
+              <p className="text-muted-foreground mb-4">Available 24/7 for your queries</p>
+              <a 
+                href="tel:18001024026" 
+                className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
+                onClick={() => trackPhoneCall()}
+              >
+                1800 1024 026
+              </a>
+              <p className="text-sm text-muted-foreground mt-2">Toll Free</p>
+            </div>
+
+            {/* Email */}
+            <div className="group text-center p-8 rounded-2xl bg-white border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
+                <Mail className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Email Us</h3>
+              <p className="text-muted-foreground mb-4">We'll respond within 24 hours</p>
+              <a 
+                href="mailto:info@cryovault.in" 
+                className="text-xl font-semibold text-primary hover:text-primary/80 transition-colors"
+                onClick={() => trackEmailClick()}
+              >
+                info@cryovault.in
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -213,67 +278,28 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Phone */}
+                  {/* Hours */}
                   <div className="flex gap-3 sm:gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                      <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground mb-1">Phone</p>
-                      <a href={`tel:${office.phone}`} className="text-foreground hover:text-primary transition">
-                        {office.phone}
+                      <p className="text-xs sm:text-sm font-medium text-muted-foreground mb-1">Working Hours</p>
+                      <p className="text-sm sm:text-base text-foreground">{office.hours}</p>
+                    </div>
+                  </div>
+
+                  {/* Google Maps Navigation */}
+                  <div className="pt-4">
+                    <Button
+                      asChild
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-2.5 rounded-lg transition-all duration-300"
+                    >
+                      <a href={office.mapLink} target="_blank" rel="noopener noreferrer" onClick={() => trackButtonClick('Get Directions', office.city)}>
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Get Directions
                       </a>
-                    </div>
-                  </div>
-
-                  {/* WhatsApp */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 mt-1">
-                      <MessageCircle className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground mb-1">WhatsApp</p>
-                      <a
-                        href={`https://wa.me/${office.whatsapp.replace(/\s+/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition"
-                      >
-                        {office.whatsapp}
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 mt-1">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground mb-1">Email</p>
-                      <div className="space-y-1">
-                        {office.emails.map((email, i) => (
-                          <a
-                            key={i}
-                            href={`mailto:${email}`}
-                            className="block text-foreground hover:text-primary transition"
-                          >
-                            {email}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Hours */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 mt-1">
-                      <Clock className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground mb-1">Working Hours</p>
-                      <p className="text-foreground">{office.hours}</p>
-                    </div>
+                    </Button>
                   </div>
                 </div>
               </div>

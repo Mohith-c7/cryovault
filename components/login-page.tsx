@@ -1,20 +1,36 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { toast } from 'sonner'
+import { signIn } from '@/lib/auth'
 
 export default function LoginPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
+
+  useEffect(() => {
+    // Check for verification or other messages
+    const message = searchParams.get('message')
+    const verified = searchParams.get('verified')
+    
+    if (message) {
+      toast.info(message)
+    }
+    
+    if (verified === 'true') {
+      toast.success('Email verified successfully! You can now log in.')
+    }
+  }, [searchParams])
 
   const validateForm = () => {
     const newErrors: { email?: string; password?: string } = {}
@@ -44,30 +60,33 @@ export default function LoginPage() {
 
     setIsLoading(true)
 
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
     try {
-      // Fake auth - accept any credentials
-      // Extract name from email (part before @)
-      const userName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+      const { data, error } = await signIn(email, password)
       
-      // Store fake user session in localStorage
-      localStorage.setItem('cryovault_user', JSON.stringify({
-        email: email,
-        name: userName || 'User',
-        loginTime: new Date().toISOString()
-      }))
+      if (error) {
+        // Provide more specific error messages
+        if (error.message.includes('Invalid login credentials')) {
+          toast.error('Invalid email or password. Please check your credentials.')
+        } else if (error.message.includes('Email not confirmed')) {
+          toast.error('Please check your email and click the verification link before logging in.')
+        } else if (error.message.includes('Too many requests')) {
+          toast.error('Too many login attempts. Please wait a moment and try again.')
+        } else {
+          toast.error(`Login failed: ${error.message}`)
+        }
+        return
+      }
 
-      toast.success(`Welcome back, ${userName || 'User'}!`)
-      
-      // Force redirect to dashboard with fallback
-      setTimeout(() => {
-        window.location.href = '/dashboard'
-      }, 500)
+      if (data.user) {
+        toast.success(`Welcome back!`)
+        
+        // Force redirect to dashboard
+        setTimeout(() => {
+          window.location.href = '/dashboard'
+        }, 500)
+      }
     } catch (err) {
       toast.error('An unexpected error occurred. Please try again.')
-      console.error('Login error:', err)
     } finally {
       setIsLoading(false)
     }
@@ -277,6 +296,18 @@ export default function LoginPage() {
                 </Link>
               </div>
 
+              {/* Test Connection Button (Development Only) */}
+              {process.env.NODE_ENV === 'development' && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleTestConnection}
+                  className="w-full"
+                >
+                  Test Supabase Connection
+                </Button>
+              )}
+
               {/* Login Button */}
               <Button
                 type="submit"
@@ -297,13 +328,19 @@ export default function LoginPage() {
             {/* Footer Note */}
             <div className="pt-6 border-t border-border">
               <p className="text-center text-sm text-muted-foreground">
-                Don't have login credentials?{' '}
+                Don't have an account?{' '}
+                <Link 
+                  href="/signup" 
+                  className="font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  Sign up here
+                </Link>
+              </p>
+              <p className="text-center text-sm text-muted-foreground mt-2">
+                Need help?{' '}
                 <span className="font-medium text-foreground">
                   Contact our support team
                 </span>
-              </p>
-              <p className="text-center text-xs text-muted-foreground mt-4">
-                🚀 Demo Mode Active
               </p>
             </div>
           </div>

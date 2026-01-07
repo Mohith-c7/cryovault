@@ -203,7 +203,7 @@ export default function InformationKitPage() {
                   <Phone className="w-5 h-5" />
                   <div>
                     <p className="text-sm font-semibold">Quick Call</p>
-                    <p className="text-xs opacity-90">+1 (555) 123-4567</p>
+                    <p className="text-xs opacity-90">1800 1024 026</p>
                   </div>
                 </div>
               </div>

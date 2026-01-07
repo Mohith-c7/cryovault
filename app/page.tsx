@@ -17,7 +17,7 @@ import AppointmentFormSection from "@/components/appointment-form-section"
 import BestInIndiaSection from "@/components/best-in-india"
 import VisionMapSection from "@/components/vision-map"
 import SiteFooter from "@/components/site-footer"
-import BlogsIntro from "@/components/blogs-intro"
+// import BlogsIntro from "@/components/blogs-intro"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { FloatingActionButton } from "@/components/floating-action-button"
 
@@ -55,8 +55,6 @@ type Photo = {
   url: string
   thumbnailUrl?: string
 }
-
-export const dynamic = "force-dynamic" // ensure SSR in Next.js
 
 export default async function Page() {
   // Hero carousel banner images
@@ -159,7 +157,7 @@ export default async function Page() {
       <ThreeStepsSection />
       <AppointmentFormSection />
       <BestInIndiaSection />
-      <BlogsIntro />
+      {/* <BlogsIntro /> */}
       <TestimonialsSection
         title="Trusted by families and clinicians"
         description="Real voices on why our service matters. Our community’s feedback keeps us improving."

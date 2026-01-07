@@ -58,27 +58,47 @@ export default function StemCellBankingPage() {
               {/* Main Image */}
               <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl mb-8">
                 <img
-                  src="/placeholder.jpg"
+                  src="/stemcellbanking.webp"
                   alt="Stem Cell Banking - Hands protecting life"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
               </div>
 
-              {/* Top Right Info Card */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 max-w-xs">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Treatment Potential</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Stem cells can treat over 80+ blood disorders, immune system diseases, and metabolic conditions with proven medical applications.
-                </p>
+              {/* Mobile Info Cards - Stack below image */}
+              <div className="block md:hidden space-y-4">
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Treatment Potential</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Stem cells can treat over 80+ blood disorders, immune system diseases, and metabolic conditions with proven medical applications.
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Perfect Match</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Your baby's stem cells are a 100% genetic match and may also be compatible with siblings and family members.
+                  </p>
+                </div>
               </div>
 
-              {/* Bottom Left Info Card */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 max-w-xs">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Perfect Match</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Your baby's stem cells are a 100% genetic match and may also be compatible with siblings and family members.
-                </p>
+              {/* Desktop Info Cards - Positioned absolutely */}
+              <div className="hidden md:block">
+                {/* Top Right Info Card */}
+                <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 max-w-xs">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Treatment Potential</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Stem cells can treat over 80+ blood disorders, immune system diseases, and metabolic conditions with proven medical applications.
+                  </p>
+                </div>
+
+                {/* Bottom Left Info Card */}
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 max-w-xs">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Perfect Match</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Your baby's stem cells are a 100% genetic match and may also be compatible with siblings and family members.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -153,16 +173,7 @@ export default function StemCellBankingPage() {
             </div>
           </div>
 
-          {/* Connecting Arrow */}
-          <div className="flex justify-center mb-16">
-            <div className="relative">
-              <div className="w-24 h-24 bg-gradient-to-br from-primary to-cyan-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-                <ArrowRight className="w-12 h-12 text-white" />
-              </div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full animate-bounce"></div>
-              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
-            </div>
-          </div>
+          
           {/* Solutions Section */}
           <div>
             <div className="text-center mb-12">
@@ -266,7 +277,7 @@ export default function StemCellBankingPage() {
               <div className="relative w-80 h-80 mx-auto mb-8">
                 <div className="w-full h-full rounded-full overflow-hidden shadow-2xl border-8 border-white/50 backdrop-blur-sm">
                   <img
-                    src="/placeholder.jpg"
+                    src="/stemcell.avif"
                     alt="Umbilical Cord Anatomy"
                     className="w-full h-full object-cover"
                   />
@@ -398,7 +409,7 @@ export default function StemCellBankingPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-red-400 mb-2">BEFORE</h3>
-                  <h4 className="text-xl font-semibold text-white">Traditional Medicine Challenges</h4>
+                  <h4 className="text-xl font-semibold text-sm">Traditional Medicine Challenges</h4>
                 </div>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -406,8 +417,8 @@ export default function StemCellBankingPage() {
                       <span className="text-white text-sm">✗</span>
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white mb-1">Limited Treatment Options</h5>
-                      <p className="text-blue-100 text-sm">Many conditions have no effective treatments available</p>
+                      <h5 className="font-semibold text-gray-900 mb-1">Limited Treatment Options</h5>
+                      <p className="text-gray-600 text-sm">Many conditions have no effective treatments available</p>
                     </div>
                   </div>
 
@@ -416,8 +427,8 @@ export default function StemCellBankingPage() {
                       <span className="text-white text-sm">✗</span>
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white mb-1">Long Wait Times</h5>
-                      <p className="text-blue-100 text-sm">Months or years waiting for compatible donors</p>
+                      <h5 className="font-semibold text-gray-900 mb-1">Long Wait Times</h5>
+                      <p className="text-gray-600 text-sm">Months or years waiting for compatible donors</p>
                     </div>
                   </div>
 
@@ -426,8 +437,8 @@ export default function StemCellBankingPage() {
                       <span className="text-white text-sm">✗</span>
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white mb-1">Rejection Risks</h5>
-                      <p className="text-blue-100 text-sm">High risk of complications from mismatched treatments</p>
+                      <h5 className="font-semibold text-gray-900 mb-1">Rejection Risks</h5>
+                      <p className="text-gray-600 text-sm">High risk of complications from mismatched treatments</p>
                     </div>
                   </div>
 
@@ -436,8 +447,8 @@ export default function StemCellBankingPage() {
                       <span className="text-white text-sm">✗</span>
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white mb-1">Uncertain Outcomes</h5>
-                      <p className="text-blue-100 text-sm">No guarantee of finding suitable matches</p>
+                      <h5 className="font-semibold text-gray-900 mb-1">Uncertain Outcomes</h5>
+                      <p className="text-gray-600 text-sm">No guarantee of finding suitable matches</p>
                     </div>
                   </div>
                 </div>
@@ -452,7 +463,7 @@ export default function StemCellBankingPage() {
                     <CheckCircle className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-cyan-400 mb-2">AFTER</h3>
-                  <h4 className="text-xl font-semibold text-white">Cord Blood Banking Benefits</h4>
+                  <h4 className="text-xl font-semibold text-sm">Cord Blood Banking Benefits</h4>
                 </div>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -499,16 +510,7 @@ export default function StemCellBankingPage() {
             </div>
           </div>
 
-          {/* Transformation Arrow */}
-          <div className="flex justify-center mb-20">
-            <div className="relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-primary to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
-                <ArrowRight className="w-16 h-16 text-white" />
-              </div>
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full animate-bounce"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
-            </div>
-          </div>
+          
           {/* Key Statistics */}
           <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/20">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">The Transformation</h3>
@@ -679,21 +681,21 @@ export default function StemCellBankingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-primary/20 shadow-lg">
-                  <img src="/placeholder.jpg" alt="Laboratory" className="w-full h-full object-cover" />
+                  <img src="/accreditions/isologo.png" alt="Laboratory" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">ISO Certified Lab</h4>
                 <p className="text-gray-600">International quality standards and rigorous testing protocols</p>
               </div>
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-blue-200 shadow-lg">
-                  <img src="/placeholder.jpg" alt="Storage" className="w-full h-full object-cover" />
+                  <img src="/lab.png" alt="Storage" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">Cryogenic Storage</h4>
                 <p className="text-gray-600">Advanced liquid nitrogen systems with redundant backup</p>
               </div>
               <div className="text-center">
                 <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-green-200 shadow-lg">
-                  <img src="/placeholder.jpg" alt="Monitoring" className="w-full h-full object-cover" />
+                  <img src="/247.avif" alt="Monitoring" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">24/7 Monitoring</h4>
                 <p className="text-gray-600">Continuous surveillance and automated alert systems</p>
@@ -729,22 +731,10 @@ export default function StemCellBankingPage() {
             </div>
           </div>
         </div>
-
-        {/* Wavy Bottom Border */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg className="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="white" opacity="0.9"></path>
-          </svg>
-        </div>
       </section>
       {/* Benefits of Stem Cells - Medical Conditions Grid with Circular Images */}
       <section className="w-full px-5 md:px-8 py-20 md:py-32 bg-gradient-to-br from-primary via-primary/90 to-[#4845a9] relative overflow-hidden">
-        {/* Wavy Top Border */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden">
-          <svg className="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="white" opacity="0.9"></path>
-          </svg>
-        </div>
+        
 
         {/* Floating Medical Icons */}
         <div className="absolute inset-0 overflow-hidden">
@@ -783,7 +773,7 @@ export default function StemCellBankingPage() {
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Blood Cancers" className="w-full h-full object-cover" />
+                    <img src="/treatments/bloodcancer.jpg" alt="Blood Cancers" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <Heart className="w-8 h-8 text-white" />
@@ -815,7 +805,7 @@ export default function StemCellBankingPage() {
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-blue-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Blood Disorders" className="w-full h-full object-cover" />
+                    <img src="/treatments/blooddisorders.jpeg" alt="Blood Disorders" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <Shield className="w-8 h-8 text-white" />
@@ -848,7 +838,7 @@ export default function StemCellBankingPage() {
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-purple-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Immune Disorders" className="w-full h-full object-cover" />
+                    <img src="/treatments/immune.webp" alt="Immune Disorders" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <Users className="w-8 h-8 text-white" />
@@ -880,7 +870,7 @@ export default function StemCellBankingPage() {
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-orange-100 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-orange-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Metabolic Disorders" className="w-full h-full object-cover" />
+                    <img src="/treatments/metabolicdisorder.jpg" alt="Metabolic Disorders" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <Microscope className="w-8 h-8 text-white" />
@@ -913,7 +903,7 @@ export default function StemCellBankingPage() {
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-teal-100 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-teal-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Bone Marrow Failure" className="w-full h-full object-cover" />
+                    <img src="/treatments/bone-marrow.jpeg" alt="Bone Marrow Failure" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <Shield className="w-8 h-8 text-white" />
@@ -946,7 +936,7 @@ export default function StemCellBankingPage() {
               <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl p-8 shadow-lg border border-yellow-200 hover:shadow-xl transition-all duration-300 group">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-yellow-200 shadow-lg group-hover:scale-110 transition-transform">
-                    <img src="/placeholder.jpg" alt="Future Research" className="w-full h-full object-cover" />
+                    <img src="/treatments/future.jpeg" alt="Future Research" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto -mt-10 relative z-10 border-4 border-white">
                     <ArrowRight className="w-8 h-8 text-white" />
@@ -1027,13 +1017,6 @@ export default function StemCellBankingPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Wavy Bottom Border */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg className="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="white" opacity="0.9"></path>
-          </svg>
         </div>
       </section>
     </main>

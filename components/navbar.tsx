@@ -58,7 +58,6 @@ export function Navbar() {
       items: [
         { label: "About Us", href: "/about" },
         { label: "Accreditations", href: "/accreditations" },
-        { label: "Leadership", href: "/leadership" },
       ],
     },
     {
@@ -137,13 +136,13 @@ export function Navbar() {
                 {/* Desktop Dropdown Menu */}
                 {openMenu === menu.label && (
                   <div className="absolute left-0 top-full pt-2 z-[99999]">
-                    <div className="w-56 bg-background border border-border rounded-lg shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                      <ul className="py-2">
+                    <div className="w-56 bg-background border border-border rounded-lg shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                      <ul className="py-1">
                         {menu.items.map((item) => (
-                          <li key={item.label}>
+                          <li key={item.label} className="mx-1">
                             <Link
                               href={item.href}
-                              className="block px-4 py-2.5 text-sm font-medium text-foreground hover:text-primary hover:bg-muted/50 transition-colors"
+                              className="block px-3 py-2.5 text-sm font-medium text-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-md"
                               onClick={() => setOpenMenu(null)}
                             >
                               {item.label}

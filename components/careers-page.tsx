@@ -2,37 +2,8 @@ import { Plus, ChevronDown, Mail } from 'lucide-react'
 import { CTAButton } from '@/components/ui/cta-button'
 
 export default function CareersPage() {
-  // Mock jobs data - will be replaced with Supabase data
-  const mockJobs = [
-    {
-      id: 1,
-      title: 'Senior Cryobiologist',
-      department: 'Research & Development',
-      location: 'Bangalore',
-      description: 'We are seeking an experienced Senior Cryobiologist to lead our research initiatives in vitrification and reanimation techniques. You will work with cutting-edge technology and contribute to groundbreaking research that could revolutionize medical science.',
-    },
-    {
-      id: 2,
-      title: 'Clinical Operations Manager',
-      department: 'Operations',
-      location: 'Bangalore',
-      description: 'Lead our clinical operations team to ensure seamless execution of stem cell banking services. Manage facility maintenance, quality assurance, and regulatory compliance. This role requires strong leadership and operational excellence.',
-    },
-    {
-      id: 3,
-      title: 'Biomedical Engineer',
-      department: 'Engineering',
-      location: 'Bangalore',
-      description: 'Design and develop advanced cryopreservation systems. Work with our engineering team to innovate solutions that improve storage efficiency and sample viability. Collaborate with researchers to translate scientific discoveries into practical applications.',
-    },
-    {
-      id: 4,
-      title: 'Customer Success Specialist',
-      department: 'Customer Relations',
-      location: 'Bangalore',
-      description: 'Become the voice of CryoVault to our customers. Provide exceptional support, manage client relationships, and ensure customer satisfaction. Help families understand the importance of stem cell banking and guide them through our services.',
-    },
-  ]
+  // No job postings - empty array
+  const mockJobs: any[] = []
 
   return (
     <main className="w-full">
@@ -91,7 +62,7 @@ export default function CareersPage() {
                 <div className="space-y-3">
                   <h3 className="text-2xl font-bold text-foreground">What Makes Us Different</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Working at CryoVault is different from a typical lab or medical facility. We blend high-tech engineering, advanced biology, ethical responsibility, and long-term facility maintenance into a unique environment where every team member contributes to preserving human potential.
+                    Working at Cryovault is different from a typical lab or medical facility. We blend high-tech engineering, advanced biology, ethical responsibility, and long-term facility maintenance into a unique environment where every team member contributes to preserving human potential.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
                     Our team combines cutting-edge technology with compassionate service, ensuring that every sample is treated with the utmost care and scientific rigor.

@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { createAppointment } from '@/lib/contact'
 
 export default function AppointmentFormSection() {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ export default function AppointmentFormSection() {
     hospitalName: '',
     address: ''
   })
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -26,10 +30,47 @@ export default function AppointmentFormSection() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsLoading(true)
+
+    try {
+      // Save to Supabase
+      const { data, error } = await createAppointment({
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone: formData.phone,
+        preferred_date: formData.appointmentDate || null,
+        location: `${formData.hospitalName}, ${formData.address}`.trim(),
+        service_type: 'Consultation',
+        message: `Expected delivery date: ${formData.expectedDeliveryDate}\nDoctor: ${formData.doctorName}\nHospital: ${formData.hospitalName}\nAddress: ${formData.address}`
+      })
+
+      if (error) {
+        throw error
+      }
+
+      setSubmitted(true)
+      
+      setTimeout(() => {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          appointmentDate: '',
+          expectedDeliveryDate: '',
+          doctorName: '',
+          hospitalName: '',
+          address: ''
+        })
+        setSubmitted(false)
+      }, 4000)
+    } catch (error) {
+      // Error submitting appointment
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -314,12 +355,27 @@ export default function AppointmentFormSection() {
 
             {/* Submit Button */}
             <div className="pt-4">
-              <Button
-                type="submit"
-                className="w-full h-14 bg-primary hover:bg-primary/90 text-white font-medium text-lg tracking-wide rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl"
-              >
-                Schedule Free Consultation
-              </Button>
+              {submitted ? (
+                <div className="w-full h-14 bg-green-500 text-white font-medium text-lg tracking-wide rounded-xl flex items-center justify-center gap-3">
+                  <CheckCircle className="w-6 h-6" />
+                  Appointment Booked Successfully!
+                </div>
+              ) : (
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full h-14 bg-primary hover:bg-primary/90 text-white font-medium text-lg tracking-wide rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  {isLoading ? (
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                      Booking Appointment...
+                    </div>
+                  ) : (
+                    'Schedule Free Consultation'
+                  )}
+                </Button>
+              )}
             </div>
 
             {/* Footer Note */}
